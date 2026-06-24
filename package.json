@@ -1,0 +1,21 @@
+{
+  "name": "femembed-bot",
+  "version": "1.0.0",
+  "description": "Discord-бот для публикации кастомных embed-ов (только владелец)",
+  "type": "module",
+  "scripts": {
+    "deploy": "tsx src/deploy-commands.ts",
+    "start": "tsx src/index.ts",
+    "dev": "tsx watch src/index.ts",
+    "build": "tsc",
+    "serve": "node dist/index.js"
+  },
+  "dependencies": {
+    "discord.js": "^14.16.3"
+  },
+  "devDependencies": {
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.2",
+    "@types/node": "^22.10.1"
+  }
+}

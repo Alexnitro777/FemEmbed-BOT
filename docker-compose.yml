@@ -1,0 +1,16 @@
+services:
+  bot:
+    build: .
+    image: femembed-bot
+    container_name: femembed-bot
+    restart: unless-stopped
+    volumes:
+      - ./config.json:/app/config.json:ro
+
+  deploy:
+    build: .
+    image: femembed-bot
+    command: ["node", "dist/deploy-commands.js"]
+    volumes:
+      - ./config.json:/app/config.json:ro
+    profiles: ["deploy"]
