@@ -43,8 +43,6 @@ const info: EmbedDefinition = {
             .setStyle(ButtonStyle.Secondary),
           EMOJI.roles,
         ),
-      ),
-      new ActionRowBuilder<ButtonBuilder>().addComponents(
         withEmoji(
           new ButtonBuilder()
             .setCustomId('info_channels')
@@ -52,8 +50,6 @@ const info: EmbedDefinition = {
             .setStyle(ButtonStyle.Secondary),
           EMOJI.channels,
         ),
-      ),
-      new ActionRowBuilder<ButtonBuilder>().addComponents(
         withEmoji(
           new ButtonBuilder()
             .setLabel('Донатики')
@@ -61,8 +57,6 @@ const info: EmbedDefinition = {
             .setURL(DONATE_URL),
           EMOJI.donate,
         ),
-      ),
-      new ActionRowBuilder<ButtonBuilder>().addComponents(
         withEmoji(
           new ButtonBuilder()
             .setLabel('Правила')
@@ -80,7 +74,7 @@ const info: EmbedDefinition = {
     info_roles: async (interaction) => {
       const embed = new EmbedBuilder()
         .setTitle('Рольки')
-        .setDescription('TODO: сюда текст/список ролей.')
+        .setDescription('бебебебебебе')
         .setColor(0x5865f2);
       await interaction.reply({ embeds: [embed], flags: MessageFlags.Ephemeral });
     },
@@ -88,7 +82,7 @@ const info: EmbedDefinition = {
     info_channels: async (interaction) => {
       const embed = new EmbedBuilder()
         .setTitle('Каналы')
-        .setDescription('TODO: сюда текст/список каналов.')
+        .setDescription('бебебебебебе')
         .setColor(0x5865f2);
       await interaction.reply({ embeds: [embed], flags: MessageFlags.Ephemeral });
     },
