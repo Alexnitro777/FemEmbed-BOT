@@ -28,7 +28,7 @@ function withEmoji(button: ButtonBuilder, emoji: string | null): ButtonBuilder {
 
 const info: EmbedDefinition = {
   name: 'info',
-  description: 'Информационный embed Femboy Party с кнопками',
+  description: 'Информация Femboy Party',
   build: () => {
     const embed = new EmbedBuilder()
       .setDescription('бебебебебеббебе')

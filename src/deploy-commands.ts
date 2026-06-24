@@ -4,7 +4,7 @@ import { commands } from './commands.js';
 
 const rest = new REST().setToken(config.token);
 
-console.log(`🚀 Регистрирую ${commands.length} команд на сервере ${config.guildId}...`);
+console.log(`🚀 Регистрирую ${commands.length} команду на сервере ${config.guildId}...`);
 await rest.put(Routes.applicationGuildCommands(config.clientId, config.guildId), {
   body: commands,
 });

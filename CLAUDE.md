@@ -28,11 +28,13 @@ Single-process Discord bot (discord.js v14). Entry point `src/index.ts` does eve
 **Embed definitions are file-based and auto-discovered.** To add an embed, drop a new file in `src/embeds/` that exports an `EmbedDefinition` (default or named export). `src/embeds/registry.ts` reads every file in that directory except `types` and `registry`, dedupes, and keys them by `name`. No manual registration anywhere. Duplicate `name` throws at load.
 
 An `EmbedDefinition` (`src/embeds/types.ts`) has:
-- `name` / `description` — `name` is what `/post name:...` takes (with autocomplete).
-- `build()` → `{ embeds, components? }` — the message payload sent by `/post`.
+- `name` / `description` — `name` is what `/запостить название:...` takes (with autocomplete).
+- `build()` → `{ embeds, components? }` — the message payload sent by `/запостить`.
 - `buttons?` — a map of `customId` → handler for interactive (non-link) buttons.
 
-**Button handler routing is global.** At startup `index.ts` flattens every embed's `buttons` into one `customId → handler` map. **Every `customId` must be unique across all embeds** — a collision throws at startup. Button clicks run for any user (public); slash commands (`/post`, `/embeds`) are gated to `OWNER_ID`.
+**The only slash command is `/запостить`** (`название` = embed name with autocomplete, optional `канал` = target channel, default current). Command names and options are Russian; match `interaction.commandName`/option strings against the Russian literals in `src/index.ts`.
+
+**Button handler routing is global.** At startup `index.ts` flattens every embed's `buttons` into one `customId → handler` map. **Every `customId` must be unique across all embeds** — a collision throws at startup. Button clicks run for any user (public); the slash command is gated two ways: `setDefaultMemberPermissions(Administrator)` in `src/commands.ts` plus a runtime `interaction.user.id !== OWNER_ID` check in `src/index.ts`.
 
 **Slash command definitions live in `src/commands.ts`** and are shared by two registration paths: auto-registration in the `ClientReady` handler of `index.ts` (runs every startup, guild-scoped), and the standalone `src/deploy-commands.ts`. Registration failure is non-fatal — the bot logs a warning and keeps running.
 

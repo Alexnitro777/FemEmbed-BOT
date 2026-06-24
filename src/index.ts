@@ -80,24 +80,12 @@ client.on(Events.InteractionCreate, async (interaction) => {
     return;
   }
 
-  if (interaction.commandName === 'вебхуки') {
-    const list = [...embeds.values()];
-    const text = list.length
-      ? list.map((e) => `• **${e.name}** — ${e.description}`).join('\n')
-      : 'Пока нет ни одного embed-а.';
-    await interaction.reply({
-      content: `**Доступные embed-ы (${list.length}):**\n${text}`,
-      flags: MessageFlags.Ephemeral,
-    });
-    return;
-  }
-
   if (interaction.commandName === 'запостить') {
     const name = interaction.options.getString('название', true);
     const def: EmbedDefinition | undefined = embeds.get(name);
     if (!def) {
       await interaction.reply({
-        content: `❌ Embed «${name}» не найден. Список: \`/вебхуки\``,
+        content: `❌ Embed «${name}» не найден.`,
         flags: MessageFlags.Ephemeral,
       });
       return;

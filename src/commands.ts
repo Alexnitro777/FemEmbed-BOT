@@ -24,8 +24,4 @@ export const commands: RESTPostAPIApplicationCommandsJSONBody[] = [
         .addChannelTypes(ChannelType.GuildText, ChannelType.GuildAnnouncement)
         .setRequired(false),
     ),
-  new SlashCommandBuilder()
-    .setName('вебхуки')
-    .setDescription('Показать список доступных embed-ов')
-    .setDefaultMemberPermissions(PermissionFlagsBits.Administrator),
 ].map((c) => c.toJSON());
