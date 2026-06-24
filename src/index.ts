@@ -80,7 +80,7 @@ client.on(Events.InteractionCreate, async (interaction) => {
     return;
   }
 
-  if (interaction.commandName === 'embeds') {
+  if (interaction.commandName === 'вебхуки') {
     const list = [...embeds.values()];
     const text = list.length
       ? list.map((e) => `• **${e.name}** — ${e.description}`).join('\n')
@@ -92,18 +92,18 @@ client.on(Events.InteractionCreate, async (interaction) => {
     return;
   }
 
-  if (interaction.commandName === 'post') {
-    const name = interaction.options.getString('name', true);
+  if (interaction.commandName === 'запостить') {
+    const name = interaction.options.getString('название', true);
     const def: EmbedDefinition | undefined = embeds.get(name);
     if (!def) {
       await interaction.reply({
-        content: `❌ Embed «${name}» не найден. Список: \`/embeds\``,
+        content: `❌ Embed «${name}» не найден. Список: \`/вебхуки\``,
         flags: MessageFlags.Ephemeral,
       });
       return;
     }
 
-    const target = (interaction.options.getChannel('channel') ?? interaction.channel) as
+    const target = (interaction.options.getChannel('канал') ?? interaction.channel) as
       | TextBasedChannel
       | null;
 
